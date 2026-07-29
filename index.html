@@ -5,23 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generate Password</title>
     <link rel="stylesheet" href="index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 </head>
 <body>
     <div class="container">
-        <h1>Password Generator</h1>
         <div class="main">
+        <div class="mainHead">
+        <i class="fa-solid fa-lock padlock"></i>
+        <span class="mainHeading">Password Generator</span>
+        </div>
+
             <div class="inputGen">
                 <input type="text" name="" id="passPlace" value = "" placeholder="Click Generate">
-                <button id = "generatePass">Generate</button>
+                <div><i class="clipboard fa-regular fa-copy" id = "beforeTick"></i>
+                <i class="fa-solid fa-check clipboard" id = "tick"></i></div>
+             </div>
+
+             <div class="aboutLength">
+                <div class="passLength">
+                <span>Password Length</span>
+                 <span id="lengthValue">4</span>
+                 </div>
+                 <input id = "length" type="range" name="" value="4" min="4" max="16">
             </div>
-            <div class="last">
-            <span><input id = "isCapital" type="checkbox" name=""  value="capital" checked = "true" > <span>Capital</span> </span>
-            <span><input id = "isSmall" type="checkbox"  name=""    value="small" checked = "true"> <span>Small</span> </span>
-            <span><input id = "isNumber" type="checkbox" name=""   value="number" checked = "true"> <span>Number</span> </span>
-            <span><input id = "isSymbol" type="checkbox" name=""   value="symbol"  checked = "true"> <span>Symbol</span> </span>
-            <input id = "length" type="range" name="" id="" value="4" min="4" max="16">
-            <p id="lengthValue">Length of password = 4</p>
+
+
+           <div class="checkCenter">
+            <div class="checkboxes">
+            <span> <label><input id = "isCapital" type="checkbox" name=""  value="capital" checked = "true" > <span>Capital</span> </label></span>
+            <span> <label><input id = "isSmall" type="checkbox"  name=""    value="small" checked = "true"> <span>Small</span> </label></span>
+            <span> <label><input id = "isNumber" type="checkbox" name=""   value="number" checked = "true"> <span>Number</span> </label></span>
+            <span> <label><input id = "isSymbol" type="checkbox" name=""   value="symbol"  checked = "true"> <span>Symbol</span></label> </span>
+            
+
             </div>
+        </div>
+        
+        
+            <button id = "generatePass">Generate Password</button>
 
         </div>
     </div>

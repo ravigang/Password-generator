@@ -2,7 +2,7 @@ let passLength = document.getElementById("length");
 let passLengthValue = document.getElementById("lengthValue");
 passLength.addEventListener("input", (e) => {
     e.preventDefault();
-    passLengthValue.innerText = `Length of password = ${passLength.value}`;
+    passLengthValue.innerText = `${passLength.value}`;
 });
 
 function randomValue(min, max){
@@ -15,12 +15,16 @@ const capital = document.getElementById("isCapital");
 const small = document.getElementById("isSmall");
 const number = document.getElementById("isNumber");
 const symbol = document.getElementById("isSymbol");
+let cpBtn = document.getElementById("beforeTick");
+let copied = document.getElementById("tick")
 
 
 let writePass = document.getElementById("passPlace");
 let genButton = document.getElementById("generatePass");
 
 genButton.addEventListener("click", () => {
+    copied.setAttribute("style", "display:none;");
+    cpBtn.setAttribute("style", "display:block;")
     let arr = [];
     let count = 0
     let empty = false;
@@ -58,7 +62,7 @@ genButton.addEventListener("click", () => {
         }
 
         if(!empty){
-            alert("Pls select either one of the boxes")
+            alert("Pls select at least one checkbox");
             break;
         }
 
@@ -81,4 +85,11 @@ genButton.addEventListener("click", () => {
 })
 
 
-// copy feature and styling will be done afterwords
+cpBtn.addEventListener("click", () => {
+    window.navigator.clipboard.writeText(`${writePass.value}`);
+    cpBtn.setAttribute("style", "display:none;");
+    copied.setAttribute("style", "display:block;")
+
+})
+
+
