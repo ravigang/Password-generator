@@ -75,7 +75,6 @@ genButton.addEventListener("click", () => {
     arr.sort(() => {
 
         ret =  0.5 - Math.random();
-        console.log(ret);
         return ret
     })
     writePass.value = `${arr.join("")}`
@@ -91,5 +90,4 @@ cpBtn.addEventListener("click", () => {
     copied.setAttribute("style", "display:block;")
 
 })
-
 
