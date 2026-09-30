@@ -22,9 +22,19 @@ let copied = document.getElementById("tick")
 let writePass = document.getElementById("passPlace");
 let genButton = document.getElementById("generatePass");
 
+
+
+if(localStorage.length != 0){
+    let dispArr = JSON.parse(localStorage.getItem("passHistory"));
+    for(info of dispArr){
+        document.getElementById("onclickExpand").insertAdjacentHTML( "beforeend" ,`<div class="try"><p style="font-size: 13px;">${info.date}</p><p style="font-size: x-large;">${info.pass}</p></div>`);
+    }
+}
+
+
+
 genButton.addEventListener("click", () => {
-    copied.setAttribute("style", "display:none;");
-    cpBtn.setAttribute("style", "display:block;")
+    
     let arr = [];
     let count = 0
     let empty = false;
@@ -77,11 +87,39 @@ genButton.addEventListener("click", () => {
         ret =  0.5 - Math.random();
         return ret
     })
-    writePass.value = `${arr.join("")}`
+    let passNew = `${arr.join("")}`
+    writePass.value = passNew;
+
+    let arrPass = JSON.parse(localStorage.getItem("passHistory"));
+    let DateC = new Date();
+    let dateK = `${DateC.getDay()}/${DateC.getMonth() + 1}/${DateC.getFullYear()}`;
+    if(arrPass === null){
+        
+        let newArr = [{date:dateK, pass: passNew}]
+        localStorage.setItem("passHistory", JSON.stringify(newArr));
+    }else{
+        // console.log(arrPass);
+        arrPass.push({date:dateK, pass: passNew});
+        localStorage.setItem("passHistory", JSON.stringify(arrPass));
+
+    }
+    
+    document.getElementById("onclickExpand").insertAdjacentHTML( "beforeend" ,`<div class="try"><p style="font-size: 13px;">${dateK}</p><p style="font-size: x-large;">${passNew}</p></div>`);
+
+    
+   
+    
+
+    
+
+
+
 
     
 
 })
+
+
 
 
 cpBtn.addEventListener("click", () => {
@@ -89,5 +127,31 @@ cpBtn.addEventListener("click", () => {
     cpBtn.setAttribute("style", "display:none;");
     copied.setAttribute("style", "display:block;")
 
+    setTimeout(() => {
+        copied.setAttribute("style", "display:none;");
+    cpBtn.setAttribute("style", "display:block;")
+    }, 3000);
+    
+
 })
 
+let count = 0;
+
+let eButton = document.getElementById("onclickExpand");
+eButton.addEventListener("click", () => {
+    if(count === 0){
+    eButton.className = "clkExpnd";
+    count = 1;
+    document.getElementById("downarr").classList.replace("rotate1", "rotate2");
+    
+
+
+
+    }else{
+        eButton.className = "bfrExpnd";
+        count = 0;  
+        document.getElementById("downarr").classList.replace("rotate2", "rotate1");
+    
+
+    }
+})

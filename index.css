@@ -18,11 +18,11 @@
     
 }
 .main{
-    
+    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     justify-content: space-between;
-    height: 490px;
+    height: 520px;
     width: 375px;
     padding: 16px;
     background-color: #F1F5F9;
@@ -191,6 +191,8 @@ input[type="range"]::-moz-range-thumb {
     color: #F8FAFC;
     font-size: 20px;
     cursor: pointer;
+    /* position: relative; */
+    z-index: 99;
 }
 
 input[type = "checkbox"]{
@@ -225,6 +227,154 @@ input[type = "checkbox"] + span{
 }
 
 
+.forExpand{
+    position: absolute;
+    background-color: yellow;
+    height: 500px;
+    border: 2px solid red;
+}
+
+
+
+.bfrExpnd{
+    position: absolute;
+  background-color: transparent;
+  width: 91%;
+  background-color: #F1F5F9;
+  border:2px solid #CBD5E1;
+  color: #969fa9;
+  max-height: 43px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: all 0.3s ease-in;
+  border-radius: 12px;
+  padding: 10px;
+  padding-top: 0;
+  bottom: 70px;
+  padding-right: 4px;
+  overflow: hidden;
+}
+
+.clkExpnd {
+  
+  position: absolute;
+  background-color: transparent;
+  max-height: 250px; /* Fixed height ki jagah max-height */
+  width: 91%;
+  background-color: #F1F5F9;
+border:2px solid #CBD5E1;
+color: #969fa9;
+  
+  display: flex;
+  flex-direction: column;
+  
+  overflow-y: auto; /* Scroll tabhi aayega jab content exceed hoga */
+  scroll-behavior: smooth;
+  
+  z-index: 100;
+  transition: all 0.3s ease-in;
+  border-radius: 12px;
+  padding: 10px;
+  padding-top: 0;
+  bottom: 70px;
+  padding-right: 4px; /* Scrollbar ko jagah dene ke liye */
+
+  /* Firefox Scrollbar Styling */
+  scrollbar-width: thin;
+  scrollbar-color: #000000 transparent;
+}
+
+/* Webkit Browsers (Chrome, Edge, Safari) Scrollbar */
+.clkExpnd::-webkit-scrollbar {
+  width: 4px;
+}
+
+.clkExpnd::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#clkExpnd::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 10px;
+}
+
+.clkExpnd::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+.clkExpnd::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+
+.try{
+    position: relative;
+    padding: 10px;
+    
+
+}
+
+.try::before{
+    
+    position: absolute;
+    content : "";
+    width: 100%;
+    height: 1.5px;
+    background-color: #94a3b847;
+    /* background-color: #2563EB; */
+    top :0;
+    left: 0;
+    fill: red;
+    
+    
+
+
+
+}
+
+.tempTest{
+    /* height: 100px; */
+    min-height: 25px;
+    /* text-align: center; */
+    padding-top:5px;
+    padding-bottom: 5px;
+    
+}
+
+.tempTest::before{
+    content: "";
+
+}
+
+
+#dropDown{
+    position: sticky;
+    top: 0;
+    padding: 10px 0px 0px 0px ;
+    margin-bottom: 10px;
+    
+    
+}
+
+
+
+#dropDown{
+    display: flex;
+     flex-direction: row;
+    justify-content: space-between;
+    background-color: #F1F5F9;
+    z-index: 200;
+    align-items: center;
+   
+}
+
+#downarr{
+    margin-right: 10px;
+}
+
 @media screen and (max-width : 390px){
     .main{
         width: 290px;
@@ -240,3 +390,23 @@ input[type = "checkbox"] + span{
 }
 }
 
+.rotate2{
+    color: #2563EB;
+    display: flex;
+    
+    transform: rotate(-180deg);
+    
+}
+
+/* .rotate2::before{
+    align-items: center;
+    justify-content: center;
+} */
+
+.rotate1{
+    color: #CBD5E1;
+    transform: rotate(0deg);
+    transform: translateY(-4px);
+    /* transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); */
+    
+}
